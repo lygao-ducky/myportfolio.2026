@@ -101,9 +101,19 @@ p, h1, h2, h3, h4, li, figcaption { position: relative; z-index: 2; }
 .avail-badge { display:inline-flex; align-items:center; gap:.5rem; padding:.42rem 1.1rem; border-radius:0; border:1px solid var(--accent); background:var(--accent-lt); color:var(--accent); font-size:.7rem; font-weight:500; letter-spacing:2px; text-transform:uppercase; margin-bottom:1.6rem; }
 .avail-dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation:blink 1.8s ease-in-out infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
-.hero-h1 { font-size:clamp(3rem,5.5vw,5.2rem); margin-bottom:1.3rem; }
+
+/* --- 更新的 Hero 文本样式 --- */
+.hero-h1 { font-size:clamp(3rem,5.5vw,5.2rem); margin-bottom:1rem; }
 .hero-h1 em { color:var(--accent); font-style:italic; }
-.hero-desc { font-size:1.05rem; color:var(--text); max-width:560px; margin-bottom:2rem; line-height:1.8; }
+
+.hero-pillars { display:flex; flex-wrap:wrap; align-items:center; gap:0.6rem; margin-bottom:1.5rem; font-family:'Jost',sans-serif; font-size:0.85rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--accent); }
+.hero-pillars .dot { color:var(--muted); font-weight:300; }
+.hero-pillars .highlight { background:var(--accent-lt); padding:0.2rem 0.6rem; border:1px solid rgba(0,47,167,0.15); border-radius:2px; }
+
+.hero-desc { font-size:1.05rem; color:var(--text); max-width:540px; margin-bottom:2.2rem; line-height:1.75; opacity:0.9; }
+.hero-desc strong { color:var(--text); font-weight:600; }
+/* ---------------------------------- */
+
 .hero-ctas { display:flex; flex-wrap:wrap; align-items:center; gap:.9rem; margin-bottom:2.4rem; }
 .skill-tags { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:2rem; }
 .skill-pill { padding:.38rem .9rem; border:1px solid var(--border); border-radius:0; font-size:.75rem; font-weight:400; letter-spacing:.5px; background:var(--card-bg); color:var(--text); transition:border-color .2s, color .2s; }
@@ -425,11 +435,23 @@ footer { border-top:1px solid var(--border); padding:3rem 5% 5rem; max-width:128
   <div class="hero">
     <div class="hero-left reveal">
       <div class="avail-badge"><span class="avail-dot"></span>Audencia PGE &nbsp;·&nbsp; Internship from January 2027</div>
+      
+      <!-- --- 这是替换后的排版结构 --- -->
       <h1 class="display hero-h1">The Evolution<br>of a <em>Brand Builder.</em></h1>
+      
+      <div class="hero-pillars reveal delay-1">
+        <span>Consumer Insights</span>
+        <span class="dot">·</span>
+        <span>Brand Storytelling</span>
+        <span class="dot">·</span>
+        <span class="highlight">AI-Powered Execution</span>
+      </div>
+
       <p class="hero-desc reveal delay-1">
-        <strong>Consumer Insights. Brand Storytelling. AI-Powered Execution.</strong><br><br>
         Dedicated to building luxury and beauty brands with depth and style. I bridge the gap between product innovation and market reality by <strong>turning data into narratives</strong> and <strong>automating complex operations</strong>.
       </p>
+      <!-- -------------------------------- -->
+
       <div class="hero-ctas reveal delay-2">
         <a href="mailto:liyi.gao.dm@gmail.com" class="btn btn-accent btn-pulse">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
