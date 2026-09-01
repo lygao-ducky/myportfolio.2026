@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liyi Gao | Brand Builder & Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:          #FAFAFA;
+  --card-bg:     #FFFFFF;
+  --text:        #1A1A1A;
+  --muted:       #808080;
+  --border:      rgba(0,0,0,0.08);
+  --accent:      #002FA7;
+  --accent-glow: rgba(0,47,167,0.12);
+  --accent-dk:   #00207A;
+  --accent-lt:   rgba(0,47,167,0.05);
+  --surface2:    #F2F2F2;
+  --nav-bg:      rgba(250,250,250,0.92);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+*:focus { outline: none; }
+html { scroll-behavior: smooth; font-size: 15px; width: 100%; height: 100%; }
+body { background: var(--bg); color: var(--text); font-family: 'Jost', sans-serif; line-height: 1.7; overflow-x: hidden; width: 100%; margin: 0; letter-spacing: 0.01em; }
+
+.display { font-family:'Cormorant Garamond',serif; font-weight:700; letter-spacing:-0.5px; line-height:1.05; }
+.heading  { font-family:'Jost',sans-serif; font-weight:500; letter-spacing:0.02em; }
+.label    { font-size:.72rem; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:var(--accent); }
+strong    { font-weight:600; color:var(--accent); }
+
+.reveal { opacity:1; transform:none; }
+#hero, #hero * { animation-play-state:running !important; }
+.will-reveal { opacity:0; transform:translateY(28px); transition:opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1); }
+.will-reveal.active { opacity:1; transform:none; }
+.delay-1 { transition-delay:.1s; }
+.delay-2 { transition-delay:.2s; }
+
+.btn { display:inline-flex; align-items:center; gap:.5rem; padding:.6rem 1.4rem; border-radius:0; font-family:'Jost',sans-serif; font-size:.78rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none; cursor:pointer; border:1px solid transparent; transition:all .4s ease; white-space:nowrap; }
+.btn:hover { transform:none; opacity:.85; }
+.btn-accent { background:var(--accent); color:#fff; border-color:var(--accent); }
+.btn-accent:hover { background:var(--accent-dk); border-color:var(--accent-dk); opacity:1; }
+.btn-ghost { border:1px solid var(--text); color:var(--text); background:transparent; }
+.btn-ghost:hover { background:var(--text); color:#fff; opacity:1; }
+.btn-solid { background:var(--text); color:var(--bg); border-color:var(--text); }
+.btn-solid:hover { background:var(--accent); border-color:var(--accent); opacity:1; }
+.btn-pulse { animation: pulse 3s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { box-shadow:0 2px 12px var(--accent-glow); } 50% { box-shadow:0 4px 24px rgba(0,47,167,.2); } }
+
+.section-wrapper { padding: 4rem 5%; max-width: 1280px; margin: 0 auto; position: relative; z-index: 10; isolation: isolate; }
+p, h1, h2, h3, h4, li, figcaption { position: relative; z-index: 2; }
+
+/* PAGE INTRO */
+#page-intro { position:fixed; inset:0; z-index:9999; pointer-events:none; display:flex; flex-direction:column; }
+.intro-strip { flex:1; background:rgba(0,47,167,0.88); backdrop-filter:blur(24px) saturate(1.2); -webkit-backdrop-filter:blur(24px) saturate(1.2); border-bottom:1px solid rgba(255,255,255,0.3); transform:translateY(0); transition:transform .8s cubic-bezier(.76,0,.24,1); }
+.intro-strip:nth-child(1){ transition-delay:.00s; }
+.intro-strip:nth-child(2){ transition-delay:.05s; }
+.intro-strip:nth-child(3){ transition-delay:.10s; }
+.intro-strip:nth-child(4){ transition-delay:.15s; }
+.intro-strip:nth-child(5){ transition-delay:.20s; }
+.intro-strip:nth-child(6){ transition-delay:.25s; }
+#page-intro.done .intro-strip { transform:translateY(-100%); }
+#page-intro.gone { display:none; }
+.intro-brand { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); z-index:10000; text-align:center; pointer-events:none; opacity:1; transition:opacity .4s ease .2s; width:100%; }
+.intro-brand.fade { opacity:0; }
+.intro-name { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(2.5rem,6vw,4rem); font-weight:700; color:#fff; letter-spacing:-1px; text-shadow:0 4px 20px rgba(0,0,0,0.2); animation:introBrandIn .6s cubic-bezier(.16,1,.3,1) .15s both; }
+.intro-role { font-family:'Jost',sans-serif; font-size:.8rem; font-weight:400; color:#fff; letter-spacing:3px; text-transform:uppercase; margin-top:8px; opacity:0; animation:introBrandIn .6s cubic-bezier(.16,1,.3,1) .25s both; }
+@keyframes introBrandIn { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+
+/* TOP NAV */
+.top-nav { display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5%; position:sticky; top:0; z-index:2000; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); background:var(--nav-bg); border-bottom:1px solid var(--border); }
+.nav-brand { display:flex; align-items:center; gap:.8rem; }
+.nav-brand img { height:26px; object-fit:contain; }
+.nav-brand span { font-family:'Jost',sans-serif; font-size:.78rem; font-weight:400; letter-spacing:2px; text-transform:uppercase; }
+.nav-right { display:flex; align-items:center; gap:12px; }
+.lang-switcher { display:flex; align-items:center; background:#FFFFFF; border:1px solid var(--border); border-radius:2px; padding:3px; gap:2px; }
+.lang-btn { padding:.35rem .9rem; font-size:.72rem; font-weight:500; letter-spacing:1px; color:var(--muted); text-decoration:none; transition:all .2s; border-radius:0; }
+.lang-btn.active { background:var(--accent); color:#fff; }
+.cv-dropdown { position:relative; }
+.nav-cv-btn { display:inline-flex; align-items:center; gap:6px; padding:.45rem 1.1rem; font-size:.72rem; font-weight:500; letter-spacing:1px; text-transform:uppercase; background:#FFFFFF; color:var(--text); border:1px solid var(--border); border-radius:0; cursor:pointer; transition:all .2s; font-family:'Jost',sans-serif; white-space:nowrap; }
+.nav-cv-btn:hover { border-color:var(--muted); background:var(--surface2); }
+.nav-cv-btn svg { opacity:0.6; }
+.cv-menu { position:absolute; top:calc(100% + 10px); right:0; background:var(--card-bg); border:1px solid var(--border); border-radius:0; overflow:hidden; box-shadow:0 12px 30px rgba(0,0,0,.08); min-width:180px; opacity:0; transform:translateY(-8px) scale(.97); pointer-events:none; transition:all .22s; z-index:9999; }
+.cv-menu a { display:flex; align-items:center; gap:.6rem; padding:.8rem 1.2rem; text-decoration:none; color:var(--text); font-size:.85rem; font-weight:500; transition:background .2s; }
+.cv-menu a:hover { background:var(--accent-lt); color:var(--accent); }
+.cv-menu a + a { border-top:1px solid var(--border); }
+.cv-dropdown.open .cv-menu { opacity:1; transform:translateY(0) scale(1); pointer-events:all; }
+.nav-linkedin-btn { display:inline-flex; align-items:center; gap:6px; padding:.45rem 1.1rem; font-size:.72rem; font-weight:500; letter-spacing:1px; text-transform:uppercase; background:var(--accent); color:#fff; border-radius:0; border:none; text-decoration:none; transition:all .2s; font-family:'Jost',sans-serif; white-space:nowrap; }
+.nav-linkedin-btn:hover { background:var(--accent-dk); transform:translateY(-1px); }
+
+/* FLOATING NAV */
+.floating-nav { position:fixed; bottom:28px; left:50%; transform:translateX(-50%); z-index:300; display:flex; align-items:center; gap:6px; background:rgba(255,255,255,0.95); backdrop-filter:blur(24px); border:1px solid rgba(0,0,0,0.1); border-radius:2px; padding:8px 12px; box-shadow:0 8px 32px rgba(0,0,0,.1); }
+.fnav-item { display:flex; flex-direction:column; align-items:center; gap:3px; padding:.6rem 1.1rem; border-radius:0; text-decoration:none; color:var(--muted); font-size:.65rem; font-weight:500; letter-spacing:1px; text-transform:uppercase; transition:all .22s; min-width:56px; }
+.fnav-item svg { width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.fnav-item:hover, .fnav-item.active { color:var(--accent); background:rgba(41,151,255,.12); }
+
+/* HERO */
+.hero { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:4rem; min-height:92vh; padding:4rem 5% 2rem; max-width:1280px; margin:0 auto; position:relative; z-index:10; }
+.avail-badge { display:inline-flex; align-items:center; gap:.5rem; padding:.42rem 1.1rem; border-radius:0; border:1px solid var(--accent); background:var(--accent-lt); color:var(--accent); font-size:.7rem; font-weight:500; letter-spacing:2px; text-transform:uppercase; margin-bottom:1.6rem; }
+.avail-dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation:blink 1.8s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+.hero-h1 { font-size:clamp(3rem,5.5vw,5.2rem); margin-bottom:1.3rem; }
+.hero-h1 em { color:var(--accent); font-style:italic; }
+.hero-desc { font-size:1.05rem; color:var(--text); max-width:560px; margin-bottom:2rem; line-height:1.8; }
+.hero-ctas { display:flex; flex-wrap:wrap; align-items:center; gap:.9rem; margin-bottom:2.4rem; }
+.skill-tags { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:2rem; }
+.skill-pill { padding:.38rem .9rem; border:1px solid var(--border); border-radius:0; font-size:.75rem; font-weight:400; letter-spacing:.5px; background:var(--card-bg); color:var(--text); transition:border-color .2s, color .2s; }
+.skill-pill:hover { border-color:var(--accent); color:var(--accent); box-shadow:0 2px 8px var(--accent-glow); }
+.hero-right { position:relative; }
+.hero-img-wrap { width:100%; height:65vh; border-radius:0; overflow:hidden; clip-path:inset(30% 30% 30% 30% round 0px); animation:expandImg 1.6s cubic-bezier(.16,1,.3,1) .3s both; box-shadow:0 20px 60px rgba(0,0,0,.12); border:none; }
+.hero-img-wrap img { width:100%; height:100%; object-fit:cover; object-position:center 15%; transform:scale(1.18); animation:scaleImg 1.6s cubic-bezier(.16,1,.3,1) .3s both; }
+.hero-name-overlay { position:absolute; bottom:-5%; left:-20%; font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(3.5rem,7vw,6rem); font-weight:800; color:#fff; mix-blend-mode:exclusion; filter:drop-shadow(0px 10px 15px rgba(0,0,0,0.5)) drop-shadow(0px 4px 6px rgba(0,0,0,0.3)); z-index:10; opacity:0; animation:fadeUp .9s ease 1.2s forwards; pointer-events:none; white-space:nowrap; }
+@keyframes expandImg { to { clip-path:inset(0 0 0 0 round 0px); } }
+@keyframes scaleImg  { to { transform:scale(1); } }
+@keyframes fadeUp    { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+
+/* CV FLIP SECTION */
+.cv-flip-section { padding:5rem 5%; max-width:1040px; margin:0 auto; position:relative; }
+.cv-flip-header { text-align:center; margin-bottom:3rem; }
+.cv-flip-header h2 { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(2rem,4vw,3.2rem); font-weight:800; letter-spacing:-1px; line-height:1.1; color:var(--text); }
+.cv-switcher { display:flex; justify-content:center; gap:.5rem; margin-bottom:3rem; }
+.cv-tab { padding:.55rem 1.4rem; border-radius:0; font-size:.75rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; border:1.5px solid var(--border); background:var(--card-bg); color:var(--muted); transition:all .22s; }
+.cv-tab.active { background:var(--accent); color:#fff; border-color:var(--accent); box-shadow:none; }
+.cv-book-wrap { perspective:1800px; display:flex; justify-content:center; align-items:center; }
+.cv-book { position:relative; width:min(560px, 90vw); }
+.cv-page { width:100%; border-radius:0; overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.15), -8px 0 24px rgba(0,0,0,.06); cursor:pointer; transform-origin:left center; transition:transform .6s cubic-bezier(.16,1,.3,1), opacity .4s; position:relative; border:1px solid var(--border); }
+.cv-page img { width:100%; display:block; border-radius:12px; }
+.cv-page::after { content:''; position:absolute; inset:0; border-radius:0; background:linear-gradient(to right, rgba(0,0,0,.08) 0%, transparent 15%); pointer-events:none; }
+.cv-page:hover { transform:rotate3d(0,1,0,-8deg); }
+.cv-download-row { display:flex; justify-content:center; gap:1rem; margin-top:3rem; flex-wrap:wrap; }
+.cv-lightbox { position:fixed; inset:0; z-index:2500; background:rgba(0,0,0,.88); backdrop-filter:blur(12px); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .3s; }
+.cv-lightbox.open { opacity:1; pointer-events:all; }
+.cv-lightbox img { max-width:min(700px,92vw); max-height:90vh; border-radius:0; box-shadow:0 40px 100px rgba(0,0,0,.5); transition:transform .4s cubic-bezier(.16,1,.3,1); transform:scale(.9); }
+.cv-lightbox.open img { transform:scale(1); }
+.cv-lightbox-close { position:absolute; top:1.5rem; right:1.5rem; width:40px; height:40px; border-radius:0; border:none; background:rgba(255,255,255,.15); cursor:pointer; color:#fff; font-size:1.2rem; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(8px); transition:background .2s; }
+.cv-lightbox-close:hover { background:rgba(255,255,255,.3); }
+
+/* DIARY PARALLAX */
+.diary-container { height:150vh; position:relative; z-index:15; margin-bottom:-5vh; }
+.diary-sticky { position:sticky; top:0; height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.diary-text { font-size:clamp(2rem,4.5vw,4rem); font-family:'Playfair Display',serif; font-style:italic; font-weight:800; color:var(--text); text-align:center; opacity:0; transform:scale(0.9) translateY(20px); letter-spacing:-1px; line-height:1.2; will-change:transform, opacity; }
+
+/* STORY */
+#story { background:var(--bg); padding-bottom:4rem; position:relative; }
+.story-header { text-align:center; margin-bottom:3rem; }
+.story-header .st-eyebrow { font-size:.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:.6rem; }
+.story-header h2 { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:800; letter-spacing:-1px; line-height:1.1; color:var(--text); }
+.story-header .st-sub { font-size:.9rem; color:var(--muted); margin-top:.5rem; }
+.timeline-wrapper { position:relative; max-width:800px; margin:0 auto; padding:0 5%; }
+.timeline-spine { position:absolute; left:calc(5% + 38px); top:0; bottom:0; width:0; border-left:2px dashed var(--accent); opacity:0.25; z-index:1; }
+.snode { position:relative; margin-bottom:2.5rem; z-index:2; }
+.snode-dot { position:absolute; left:32px; top:25px; width:12px; height:12px; border-radius:50%; background:var(--bg); border:2px solid var(--accent); box-shadow:0 0 0 4px var(--accent-glow); z-index:3; transition:all 0.3s; }
+.snode.open .snode-dot { background:var(--accent); box-shadow:0 0 0 6px var(--accent-glow); }
+.snode-trigger { display:flex; align-items:center; gap:1.5rem; padding-left:70px; cursor:pointer; transition:opacity 0.3s; }
+.snode-trigger:hover { opacity:0.8; }
+.snode-icon { width:64px; height:64px; border-radius:2px; background:var(--card-bg); border:1px solid var(--border); box-shadow:0 8px 16px rgba(0,0,0,0.03); padding:6px; flex-shrink:0; transition:transform 0.3s, border-color 0.3s; }
+.snode-icon img { width:100%; height:100%; object-fit:contain; mix-blend-mode:multiply; }
+.snode.open .snode-icon { border-color:var(--accent); transform:translateY(-2px); box-shadow:0 10px 20px var(--accent-glow); }
+.snode-info { display:flex; flex-direction:column; gap:2px; }
+.snode-year { font-family:'Space Grotesk',sans-serif; font-size:0.7rem; font-weight:800; color:var(--accent); letter-spacing:1px; text-transform:uppercase; }
+.snode-title { font-family:'Space Grotesk',sans-serif; font-size:1.2rem; font-weight:700; color:var(--text); line-height:1.2; }
+.snode-hint { font-size:0.75rem; color:var(--muted); display:inline-flex; align-items:center; gap:4px; transition:color 0.3s; margin-top:2px; }
+.snode-hint::before { content:'→'; transition:transform 0.3s; }
+.snode.open .snode-hint { color:var(--accent); }
+.snode.open .snode-hint::before { transform:rotate(90deg); }
+.snode-expansion { display:grid; grid-template-rows:0fr; transition:grid-template-rows 0.4s cubic-bezier(0.16,1,0.3,1); margin-left:70px; }
+.snode.open .snode-expansion { grid-template-rows:1fr; }
+.snode-expansion-inner { overflow:hidden; }
+.snode-detail-card { background:var(--card-bg); border:1px solid var(--border); border-radius:0; padding:1.5rem; margin-top:1rem; margin-bottom:0.5rem; box-shadow:0 15px 30px rgba(0,0,0,0.04); }
+.snode-detail-card p { font-size:0.95rem; color:var(--text); line-height:1.6; margin-bottom:1.2rem; }
+.snode-gallery { display:flex; gap:12px; overflow-x:auto; padding-bottom:8px; scroll-snap-type:x mandatory; }
+.snode-gallery::-webkit-scrollbar { height:3px; }
+.snode-gallery::-webkit-scrollbar-track { background:var(--surface2); border-radius:3px; }
+.snode-gallery::-webkit-scrollbar-thumb { background:var(--muted); border-radius:3px; }
+.snode-gallery figure { flex:0 0 auto; scroll-snap-align:center; margin:0; }
+.snode-gallery img { height:160px; width:auto; max-width:240px; object-fit:cover; border-radius:0; border:1px solid var(--border); }
+.snode-gallery figcaption { font-size:0.7rem; color:var(--muted); margin-top:6px; text-align:center; }
+.snode-wave-container { text-align:center; margin:0; line-height:0; position:relative; z-index:1; }
+.snode-wave-container svg { height:30px; margin-left:calc(96px - 12px); display:block; }
+.story-bridge-v2 { display:flex; flex-direction:column; align-items:center; gap:.4rem; margin:1.5rem 0 2rem; opacity:.6; }
+.story-bridge-v2 .sbv-line { width:2px; height:40px; background:linear-gradient(to bottom, rgba(41,151,255,.4), rgba(41,151,255,.0)); }
+.story-bridge-v2 .sbv-label { font-size:.7rem; font-weight:600; letter-spacing:1px; color:var(--accent); text-transform:uppercase; }
+
+/* O2O */
+.o2o-trigger { background:var(--card-bg); border:1px solid var(--border); border-radius:0; padding:2.5rem; cursor:pointer; transition:all .3s cubic-bezier(.16,1,.3,1); position:relative; overflow:hidden; max-width:900px; margin:0 auto; box-shadow:0 10px 30px rgba(0,0,0,0.03); }
+.o2o-trigger::before { content:''; position:absolute; inset:0; border-radius:0; background:linear-gradient(120deg,var(--accent-lt) 0%,transparent 60%); opacity:0; transition:opacity .3s; }
+.o2o-trigger:hover { border-color:var(--accent); transform:translateY(-5px); box-shadow:0 20px 40px var(--accent-glow); }
+.o2o-trigger:hover::before { opacity:1; }
+.o2o-inner { display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; position:relative; z-index:1; }
+.o2o-icon { width:64px; height:64px; object-fit:contain; background:#fff; border-radius:14px; padding:5px; border:1px solid var(--border); flex-shrink:0; }
+.o2o-text { flex:1; min-width:0; }
+.o2o-open-hint { display:inline-flex; align-items:center; gap:.5rem; color:#fff; font-size:.75rem; font-weight:500; letter-spacing:1px; text-transform:uppercase; margin-top:1.5rem; background:var(--accent); padding:.6rem 1.2rem; border-radius:0; box-shadow:0 4px 12px var(--accent-glow); transition:background .2s, transform .2s; }
+.o2o-trigger:hover .o2o-open-hint { background:var(--accent-dk); transform:translateX(5px); }
+
+/* DRAWER */
+.drawer-overlay { position:fixed; inset:0; z-index:400; background:rgba(0,0,0,.4); backdrop-filter:blur(4px); opacity:0; pointer-events:none; transition:opacity .35s; }
+.drawer-overlay.open { opacity:1; pointer-events:all; }
+.drawer { position:fixed; top:0; right:0; bottom:0; z-index:401; width:min(720px,96vw); background:var(--card-bg); box-shadow:-20px 0 60px rgba(0,0,0,.08); transform:translateX(100%); transition:transform .4s cubic-bezier(.16,1,.3,1); overflow-y:auto; padding:2.5rem; border-radius:0; }
+.drawer.open { transform:translateX(0); }
+.drawer-close { display:flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:0; border:none; background:var(--surface2); cursor:pointer; color:var(--muted); font-size:1rem; margin-bottom:1.5rem; transition:background .2s; }
+.drawer-close:hover { background:var(--border); }
+.drawer h3 { font-family:'Space Grotesk',sans-serif; font-size:1.6rem; font-weight:700; margin:.5rem 0 1rem; line-height:1.2; }
+.drawer .kpi-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.2rem 0; }
+.drawer .kpi { background:var(--bg); border:1px solid var(--border); border-radius:0; padding:1rem; }
+.drawer .kpi-num { font-family:'Space Grotesk',sans-serif; font-size:1.8rem; font-weight:800; color:var(--accent); line-height:1; }
+.drawer .kpi-label { font-size:.75rem; color:var(--muted); font-weight:500; margin-top:.3rem; }
+.kpi-badge { display:inline-block; padding:.5rem 1rem; background:var(--accent-lt); color:var(--accent); border-radius:0; font-weight:500; font-size:.78rem; letter-spacing:.5px; margin:.8rem 0; border:1px solid rgba(0,47,167,0.15); }
+.drawer-bullets { padding-left:1rem; color:var(--text); font-size:.95rem; }
+.drawer-bullets li { margin-bottom:.6rem; line-height:1.6; }
+.drawer-gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:1.5rem; }
+.drawer-gallery figure { margin:0; }
+.drawer-gallery img { width:100%; height:130px; object-fit:cover; border-radius:10px; border:1px solid var(--border); }
+.drawer-gallery figcaption { margin-top:5px; font-size:.75rem; color:var(--muted); text-align:center; }
+
+/* ARSENAL */
+.arsenal-header { text-align:center; margin-bottom:2.5rem; padding-top:3rem; }
+.arsenal-header p.label { margin-bottom:.4rem; }
+.arsenal-header h2 { font-size:clamp(2rem,3.5vw,3rem); font-style:italic; line-height:1.1; font-family:'Playfair Display',serif; font-weight:800; color:var(--text); }
+#arsenal { background:var(--bg); padding-bottom:4rem; }
+.accordion-container { display:flex; flex-direction:column; gap:.8rem; max-width:900px; margin:0 auto; position:relative; }
+.accordion-item { background:var(--card-bg); border:1px solid var(--border); border-radius:0; overflow:hidden; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s, box-shadow 0.3s; position:relative; }
+.accordion-item::after { content:''; position:absolute; inset:0; border-radius:0; background:linear-gradient(120deg,var(--accent-lt) 0%,transparent 60%); opacity:0; transition:opacity .3s; pointer-events:none; }
+.accordion-item:hover { transform:translateY(-4px) scale(1.01); border-color:var(--accent); box-shadow:0 15px 30px var(--accent-glow); }
+.accordion-item:hover::after { opacity:1; }
+.accordion-item::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:linear-gradient(to bottom,var(--accent),var(--accent-dk)); opacity:0; transition:opacity .3s; }
+.accordion-item.open { transform:none; border-color:rgba(41,151,255,.3); box-shadow:0 8px 30px rgba(41,151,255,.06); }
+.accordion-item.open::before { opacity:1; }
+.accordion-item.open::after { opacity:0; }
+.accordion-header { display:flex; align-items:center; gap:1rem; padding:1.5rem; cursor:pointer; position:relative; z-index:2; }
+.acc-logo { width:50px; height:50px; object-fit:contain; background:var(--bg); padding:5px; border-radius:12px; border:1px solid var(--border); flex-shrink:0; }
+.acc-meta { flex:1; min-width:0; }
+.acc-period { font-size:.75rem; color:var(--accent); font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:.2rem; }
+.acc-company { font-family:'Space Grotesk',sans-serif; font-size:1.2rem; font-weight:700; line-height:1.2; margin-bottom:.3rem; }
+.acc-focus { display:inline-block; font-size:.72rem; font-weight:400; letter-spacing:.5px; color:var(--muted); background:var(--surface2); border-radius:0; padding:.2rem .6rem; }
+.acc-hint { font-size:0.75rem; font-weight:600; color:var(--accent); opacity:0; transition:opacity 0.3s; padding-right:1rem; }
+.accordion-item:hover .acc-hint { opacity:1; }
+.accordion-item.open .acc-hint { opacity:0; }
+.acc-chevron { width:28px; height:28px; border-radius:0; flex-shrink:0; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; transition:transform .3s; }
+.accordion-item.open .acc-chevron { transform:rotate(180deg); background:var(--accent); border-color:var(--accent); color:#fff; }
+.acc-chevron svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+.accordion-body { max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.16,1,.3,1); position:relative; z-index:2; }
+.accordion-item.open .accordion-body { max-height:1200px; }
+.accordion-inner { padding:0 1.5rem 2rem calc(1.5rem + 50px + 1rem); }
+.acc-bullets { padding-left:1rem; color:var(--text); font-size:.95rem; margin-bottom:1.2rem; }
+.acc-bullets li { margin-bottom:.6rem; line-height:1.6; }
+.acc-gallery { display:flex; gap:10px; overflow-x:auto; padding-bottom:8px; scroll-snap-type:x mandatory; }
+.acc-gallery::-webkit-scrollbar { height:4px; }
+.acc-gallery::-webkit-scrollbar-track { background:var(--surface2); border-radius:4px; }
+.acc-gallery::-webkit-scrollbar-thumb { background:var(--muted); border-radius:4px; }
+.acc-gallery figure { flex:0 0 auto; scroll-snap-align:center; margin:0; }
+.acc-gallery img { height:160px; width:auto; max-width:240px; object-fit:cover; border-radius:0; border:1px solid var(--border); }
+.acc-gallery figcaption { margin-top:6px; font-size:.75rem; color:var(--muted); text-align:center; }
+
+/* AI DEMO */
+#demo { background:var(--bg); position:relative; }
+.ai-card { display:grid; grid-template-columns:1fr 1.2fr; gap:3rem; align-items:center; background:var(--card-bg); border:1px solid var(--border); border-radius:0; padding:3.5rem; position:relative; overflow:hidden; isolation:isolate; max-width:1100px; margin:0 auto; box-shadow:0 15px 40px rgba(0,0,0,0.04); }
+.ai-card::before { content:''; position:absolute; top:-30%; right:-5%; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%); pointer-events:none; }
+.ai-card > div { position:relative; z-index:1; }
+.ai-card h3 { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3vw,2.2rem); font-weight:800; margin:.4rem 0 .8rem; line-height:1.2; }
+.ai-card p { color:var(--text); font-size:.95rem; line-height:1.7; }
+.ai-card p+p { margin-top:.6rem; }
+.browser { border:1px solid var(--border); border-radius:0; overflow:hidden; box-shadow:0 12px 36px rgba(0,0,0,.06); background:#fff; min-width:0; }
+.browser-bar { height:30px; background:#F2F2F2; display:flex; align-items:center; padding-left:12px; gap:6px; border-bottom:1px solid var(--border); }
+.b-dot { width:10px; height:10px; border-radius:50%; }
+.b-dot:nth-child(1){background:#ff5f56} .b-dot:nth-child(2){background:#ffbd2e} .b-dot:nth-child(3){background:#27c93f}
+.browser iframe { width:100%; height:360px; border:none; display:block; background:#fff; }
+.pipeline-diagram { display:flex; flex-direction:column; gap:1rem; margin:1.5rem 0; padding:1.5rem; background:var(--surface2); border:1px solid var(--border); border-radius:0; }
+.pl-node { display:flex; align-items:center; gap:1rem; background:var(--card-bg); border:1px solid var(--border); padding:.8rem 1rem; border-radius:0; box-shadow:0 4px 12px rgba(0,0,0,0.03); }
+.pl-icon { width:32px; height:32px; border-radius:0; background:var(--accent-lt); display:flex; align-items:center; justify-content:center; color:var(--accent); flex-shrink:0; }
+.pl-text { flex:1; }
+.pl-title { font-family:'Space Grotesk',sans-serif; font-size:0.85rem; font-weight:700; color:var(--text); }
+.pl-desc { font-size:0.75rem; color:var(--muted); margin-top:2px; }
+.pl-connector { width:2px; height:16px; background:var(--accent); opacity:0.3; margin:-1rem 0 -1rem 26px; }
+
+/* MANIFESTO — premium gradient, no image dependency */
+#manifesto { background:var(--bg); padding-bottom:3rem; padding-top:2rem; }
+.manifesto-container {
+  position:relative; max-width:860px; margin:0 auto;
+  border-radius:20px; overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,0.12);
+  min-height:260px;
+  background: linear-gradient(135deg, #001a6e 0%, #002FA7 40%, #001580 70%, #000d4a 100%);
+}
+.manifesto-container::after {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse at 75% 25%, rgba(255,255,255,0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 15% 75%, rgba(0,20,100,0.3) 0%, transparent 50%);
+  pointer-events:none;
+}
+.manifesto-glass {
+  position:relative; z-index:2;
+  padding:2.8rem 3rem;
+  display:flex; flex-direction:column; justify-content:center;
+}
+.manifesto-glass::before {
+  content:''; position:absolute; left:0; top:0; bottom:0; width:4px;
+  border-radius:20px 0 0 20px;
+  background:linear-gradient(to bottom,var(--accent),var(--accent-dk));
+}
+.manifesto-quote-mark { font-family:'Playfair Display',serif; font-size:3.5rem; line-height:.8; color:#fff; opacity:.35; margin-bottom:.4rem; }
+.manifesto-label { font-size:.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:.7rem; }
+.manifesto-text { font-size:1rem; color:rgba(255,255,255,0.9); line-height:1.8; max-width:580px; }
+.manifesto-text strong { color:#fff; font-weight:700; }
+
+/* HOBBIES */
+#hobbies { background:var(--bg); position:relative; padding-bottom:5rem; }
+.hobby-stack { display:flex; gap:12px; height:380px; align-items:stretch; max-width:1040px; margin:2.5rem auto 0; }
+.hobby-card { flex:1; border-radius:0; overflow:hidden; position:relative; cursor:pointer; transition:flex .5s cubic-bezier(.16,1,.3,1), box-shadow .4s; box-shadow:0 4px 20px rgba(0,0,0,.06); min-width:0; border:none; }
+.hobby-stack:hover .hobby-card { flex:.4; }
+.hobby-stack:hover .hobby-card:hover { flex:2; box-shadow:0 15px 40px rgba(0,0,0,.1); }
+.hobby-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s cubic-bezier(.16,1,.3,1); }
+.hobby-card:hover .hobby-img { transform:scale(1.05); }
+.hobby-gradient { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.8) 0%,rgba(0,0,0,.1) 50%,transparent 100%); }
+.hobby-body { position:absolute; bottom:0; left:0; right:0; padding:1.2rem; color:#fff; }
+.hobby-body h4 { font-family:'Space Grotesk',sans-serif; font-size:1.1rem; font-weight:700; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.hobby-body p { font-size:.85rem; line-height:1.5; opacity:0; transform:translateY(8px); transition:opacity .4s .1s, transform .4s .1s; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; color:rgba(255,255,255,0.9); }
+.hobby-stack .hobby-card:hover .hobby-body p { opacity:1; transform:translateY(0); }
+
+/* FOOTER */
+footer { border-top:1px solid var(--border); padding:3rem 5% 5rem; max-width:1280px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:1.2rem; }
+.footer-contact { display:flex; flex-wrap:wrap; justify-content:center; gap:.8rem; }
+.footer-copy { font-size:.8rem; color:var(--muted); text-align:center; }
+
+/* RESPONSIVE */
+@media (max-width:860px) {
+  .hero { grid-template-columns:1fr; gap:2rem; padding:2rem 5% 1.5rem; min-height:auto; }
+  .hero-right { order:-1; }
+  .hero-img-wrap { height:60vw; }
+  .hero-name-overlay { font-size:4rem; left:0; mix-blend-mode:normal; filter:none; text-shadow:0 4px 15px rgba(0,0,0,0.6); color:#fff; opacity:1; animation:none; }
+  .snode { padding-left:50px; margin-bottom:1.5rem; }
+  .timeline-spine { left:calc(5% + 15px); }
+  .snode-dot { left:9px; top:22px; }
+  .snode-trigger { padding-left:0; gap:1rem; }
+  .snode-icon { width:56px; height:56px; }
+  .snode-expansion { margin-left:0; }
+  .snode-detail-card { padding:1.2rem; }
+  .drawer { width:100vw; border-radius:24px 24px 0 0; top:auto; height:90vh; transform:translateY(100%); }
+  .drawer.open { transform:translateY(0); }
+  .drawer-gallery { grid-template-columns:1fr 1fr; }
+  .ai-card { grid-template-columns:1fr; padding:2rem; gap:2rem; }
+  .browser iframe { height:300px; }
+  .nav-brand span { display:none; }
+  .nav-linkedin-btn span { display:none; }
+  .floating-nav { bottom:12px; padding:6px 8px; width:90%; justify-content:space-between; }
+  .fnav-item { padding:.4rem .6rem; font-size:.6rem; min-width:40px; }
+  .accordion-header { padding:1.2rem; gap:.8rem; }
+  .acc-hint { display:none; }
+  .accordion-inner { padding:0 1.2rem 2rem 1.2rem; }
+  .acc-logo { width:44px; height:44px; }
+  .hobby-stack { flex-direction:column; height:auto; }
+  .hobby-card { flex:none; height:180px; }
+  .hobby-stack:hover .hobby-card { flex:none; height:180px; }
+  .hobby-stack:hover .hobby-card:hover { flex:none; height:240px; }
+  .hobby-body p { opacity:.9; transform:none; }
+  .manifesto-glass { padding:2rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="page-intro">
+  <div class="intro-strip"></div><div class="intro-strip"></div><div class="intro-strip"></div>
+  <div class="intro-strip"></div><div class="intro-strip"></div><div class="intro-strip"></div>
+</div>
+<div class="intro-brand" id="intro-brand">
+  <div class="intro-name display">Liyi GAO</div>
+  <div class="intro-role">Brand Builder &amp; Product Manager</div>
+</div>
+
+<div class="overflow-protector">
+
+<nav class="top-nav">
+  <div class="nav-brand">
+    <img src="assets/logos/audencia.webp" alt="Audencia">
+    <span>Audencia GE Program (PGE)</span>
+  </div>
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <a href="pro.html"    class="lang-btn active" data-lang="en">EN</a>
+      <a href="pro_fr.html" class="lang-btn"        data-lang="fr">FR</a>
+      <a href="pro_zh.html" class="lang-btn"        data-lang="zh">中文</a>
+    </div>
+    <div class="cv-dropdown" id="nav-cv">
+      <button class="nav-cv-btn">
+        Download CV
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="cv-menu">
+        <a href="./Liyi%20GAO_CV%20ENG_MARKETING.pdf" download>🇬🇧 English CV</a>
+        <a href="./Liyi%20GAO_CV%20Fr_MARKETING.pdf" download>🇫🇷 CV en Français</a>
+      </div>
+    </div>
+    <a href="https://www.linkedin.com/in/liyi-gao" target="_blank" class="nav-linkedin-btn">
+      LinkedIn <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+    </a>
+  </div>
+</nav>
+
+<nav class="floating-nav" id="floating-nav">
+  <a class="fnav-item active" href="#hero">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+    <span>Home</span>
+  </a>
+  <a class="fnav-item" href="#story">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+    <span>Story</span>
+  </a>
+  <a class="fnav-item" href="#arsenal">
+    <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+    <span>Work</span>
+  </a>
+  <a class="fnav-item" href="#demo">
+    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+    <span>Project</span>
+  </a>
+  <a class="fnav-item" href="#hobbies">
+    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+    <span>Life</span>
+  </a>
+</nav>
+
+<section id="hero" class="section-wrapper">
+  <div class="hero">
+    <div class="hero-left reveal">
+      <div class="avail-badge"><span class="avail-dot"></span>Audencia PGE &nbsp;·&nbsp; Internship from July 2026</div>
+      <h1 class="display hero-h1">The Evolution<br>of a <em>Brand Builder.</em></h1>
+      <p class="hero-desc reveal delay-1">
+        Dedicated to translating deep <strong>Consumer Insights</strong> into impactful <strong>Go-To-Market strategies</strong>. I aspire to build luxury and beauty brands with depth and style, bridging the gap between product innovation and brand storytelling.
+      </p>
+      <div class="hero-ctas reveal delay-2">
+        <a href="mailto:liyi.gao.dm@gmail.com" class="btn btn-accent btn-pulse">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          liyi.gao.dm@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/liyi-gao" target="_blank" class="btn btn-ghost">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="skill-tags reveal delay-2">
+        <div class="skill-pill">🇨🇳 Mandarin</div>
+        <div class="skill-pill">🇫🇷 French C1</div>
+        <div class="skill-pill">🇬🇧 English C2</div>
+        <div class="skill-pill">SQL</div>
+        <div class="skill-pill">Google Analytics</div>
+        <div class="skill-pill">Microsoft Office</div>
+        <div class="skill-pill">PowerPoint</div>
+      </div>
+    </div>
+    <div class="hero-right reveal delay-2">
+      <div class="hero-img-wrap">
+        <img src="assets/hero/liyi.webp" alt="Liyi Gao">
+      </div>
+      <div class="hero-name-overlay display">Liyi GAO</div>
+    </div>
+  </div>
+</section>
+
+<section class="cv-flip-section reveal">
+  <div class="cv-flip-header">
+    <p class="label" style="margin-bottom:.6rem;">Download &amp; Preview</p>
+    <h2 class="display">My CV,<br><em style="color:var(--accent);">at a glance</em></h2>
+    <div style="display:inline-flex;align-items:center;gap:.6rem;margin:1.2rem 0 .4rem;padding:.6rem 1.4rem;background:var(--accent-lt);border:1.5px solid rgba(41,151,255,.25);border-radius:40px;">
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);animation:blink 1.8s ease-in-out infinite;display:inline-block;"></span>
+      <span style="font-size:.85rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;">Actively seeking internship · Available from July 2026</span>
+    </div>
+    <p style="margin-top:.6rem;">Click to preview full CV · Download below</p>
+  </div>
+  <div class="cv-switcher">
+    <button class="cv-tab active" data-cv="en" onclick="switchCV('en')">🇬🇧 English</button>
+    <button class="cv-tab" data-cv="fr" onclick="switchCV('fr')">🇫🇷 Français</button>
+  </div>
+  <div class="cv-book-wrap">
+    <div class="cv-book">
+      <div class="cv-page" id="cv-page-en" onclick="openCVLight('en')">
+        <img src="assets/cv/Liyi GAO_CV ENG_MARKETING 2026.webp" alt="English CV" id="cv-img-en">
+      </div>
+      <div class="cv-page" id="cv-page-fr" style="display:none;" onclick="openCVLight('fr')">
+        <img src="assets/cv/Liyi GAO_CV FR_MARKETING 2026.webp" alt="French CV" id="cv-img-fr">
+      </div>
+    </div>
+  </div>
+  <div class="cv-download-row">
+    <a href="./Liyi%20GAO_CV%20ENG_MARKETING.pdf" download class="btn btn-accent">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download English CV
+    </a>
+    <a href="./Liyi%20GAO_CV%20Fr_MARKETING.pdf" download class="btn btn-ghost">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Télécharger CV Français
+    </a>
+  </div>
+</section>
+
+<div class="diary-container" id="diary-container">
+  <div class="diary-sticky">
+    <h2 class="diary-text display" id="diary-text">IT ALL STARTED<br>WITH EMPATHY.</h2>
+  </div>
+</div>
+
+<section id="story">
+  <div class="story-header reveal">
+    <p class="st-eyebrow">Journey</p>
+    <h2>Self-Growth &amp; Entrepreneurial Journey</h2>
+    <p class="st-sub">Click each chapter to expand the story.</p>
+  </div>
+
+  <div class="timeline-wrapper">
+    <div class="timeline-spine"></div>
+
+    <div class="snode reveal" id="node-2013">
+      <div class="snode-dot"></div>
+      <div class="snode-trigger" onclick="toggleSnode('node-2013')">
+        <div class="snode-icon"><img src="assets/story/grandma-1.webp" alt="2013"></div>
+        <div class="snode-info">
+          <span class="snode-year">2013 · Consumer Insights</span>
+          <h3 class="snode-title heading">Grandma's Stall: My First Lesson in Brand Storytelling</h3>
+          <span class="snode-hint">Click to expand</span>
+        </div>
+      </div>
+      <div class="snode-expansion">
+        <div class="snode-expansion-inner">
+          <div class="snode-detail-card">
+            <p>Long before I knew what a "Unique Selling Proposition" was, I was just a kid trying to help my grandma deal with her surplus veggies. Instead of shouting clever sales pitches, I scribbled the facts on cardboard: <strong>"soybean residue fertilizer," "all-natural," and "fresh from the garden."</strong></p>
+            <p>It worked. People trusted the honesty. My first accidental lesson in consumer psychology: <strong>authentic storytelling and crystal-clear communication</strong> build stronger connections than any marketing trick.</p>
+            <div class="snode-gallery">
+              <figure><img src="assets/story/grandma-1.webp" alt=""><figcaption>Grandma's Harvest</figcaption></figure>
+              <figure><img src="assets/story/grandma-2.webp" alt=""><figcaption>Honest Copywriting</figcaption></figure>
+              <figure><img src="assets/story/grandma-3.webp" alt=""><figcaption>Building Trust</figcaption></figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="snode-wave-container">
+      <svg width="2" height="30" viewBox="0 0 2 30" fill="none"><path d="M1,0 L1,30" stroke="#2997FF" stroke-width="2" stroke-dasharray="4,4" opacity=".45"/></svg>
+    </div>
+
+    <div class="snode reveal delay-1" id="node-2015">
+      <div class="snode-dot"></div>
+      <div class="snode-trigger" onclick="toggleSnode('node-2015')">
+        <div class="snode-icon"><img src="assets/story/flea-1.webp" alt="2015"></div>
+        <div class="snode-info">
+          <span class="snode-year">2015 · Brand Positioning</span>
+          <h3 class="snode-title heading">The Flea Market Pop-Up</h3>
+          <span class="snode-hint">Click to expand</span>
+        </div>
+      </div>
+      <div class="snode-expansion">
+        <div class="snode-expansion-inner">
+          <div class="snode-detail-card">
+            <p>Who knew a weekend flea market could be a crash course in brand positioning? I <strong>curated products with a highly consistent aesthetic</strong> and built an immersive visual display that made a simple folding table feel like a boutique concept store.</p>
+            <p>The result? I was able to <strong>sell at a premium price and sell out incredibly fast</strong>. First real-world proof that <strong>a cohesive aesthetic and clear brand positioning are powerful growth levers.</strong></p>
+            <div class="snode-gallery">
+              <figure><img src="assets/story/flea-1.webp" alt=""><figcaption>Curated Selection</figcaption></figure>
+              <figure><img src="assets/story/flea-2.webp" alt=""><figcaption>Boutique Vibe</figcaption></figure>
+              <figure><img src="assets/story/flea-3.webp" alt=""><figcaption>Flea Market</figcaption></figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="story-bridge-v2 reveal">
+      <div class="sbv-line"></div>
+      <div class="sbv-label">Flagship project ↓</div>
+    </div>
+  </div>
+
+  <div class="o2o-trigger reveal" id="o2o-trigger">
+    <div class="o2o-inner">
+      <img src="assets/o2o/icon.webp" alt="O2O" class="o2o-icon" style="object-fit:contain;">
+      <div class="o2o-text">
+        <p class="label" style="margin-bottom:.3rem;">2022 · First Entrepreneurial Venture</p>
+        <h3 class="heading" style="font-size:1.6rem; margin-bottom:.4rem;">Building a Campus O2O Retail Network</h3>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.5;">400+ MAU · 80% repurchase · &lt;5% waste · 1,000+ private-domain users</p>
+      </div>
+      <div class="o2o-open-hint">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        Case Study
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="drawer-overlay" id="drawer-overlay"></div>
+<div class="drawer" id="o2o-drawer">
+  <button class="drawer-close" id="drawer-close">✕</button>
+  <p class="label">Phase 2 (2022) · First Entrepreneurial Venture</p>
+  <h3 class="heading">Building a Campus O2O Retail Network</h3>
+  <p style="color:var(--text);font-size:.95rem;line-height:1.7;margin-bottom:1rem;">
+    Founded a new digital business ecosystem with online ordering and offline delivery — from a blank page to a thriving campus brand.
+  </p>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-num heading">400+</div><div class="kpi-label">Monthly Active Users</div></div>
+    <div class="kpi"><div class="kpi-num heading">80%</div><div class="kpi-label">Repurchase Rate</div></div>
+    <div class="kpi"><div class="kpi-num heading">&lt;5%</div><div class="kpi-label">Perishable Waste</div></div>
+  </div>
+  <div class="kpi-badge">Designed materials driving engagement across <strong>1,000+ private-domain users</strong></div>
+  <ul class="drawer-bullets" style="margin-top:1.2rem;">
+    <li><strong>Founded</strong> a digital ecosystem with online ordering and offline delivery, scaling from fresh produce to <strong>high-margin products</strong> without a physical storefront.</li>
+    <li><strong>Directed</strong> end-to-end supply chain and SKU selection, driving an <strong>80% repurchase rate</strong> among 400+ Monthly Active Users.</li>
+    <li><strong>Cultivated</strong> a brand community via targeted CRM, reaching <strong>1,000+ private-domain users</strong> while keeping waste strictly <strong>under 5%</strong>.</li>
+  </ul>
+  <div class="drawer-gallery">
+    <figure><img src="assets/o2o/o2o-1.webp" alt=""><figcaption>Dorm shelf system</figcaption></figure>
+    <figure><img src="assets/o2o/o2o-2.webp" alt=""><figcaption>Data-driven orders</figcaption></figure>
+    <figure><img src="assets/o2o/o2o-3.webp" alt=""><figcaption>Frictionless UI</figcaption></figure>
+    <figure><img src="assets/o2o/o2o-4.webp" alt=""><figcaption>High-retention CRM</figcaption></figure>
+  </div>
+</div>
+
+<div class="arsenal-header reveal" id="arsenal">
+  <p class="label" style="margin-bottom:.4rem;">Experience</p>
+  <h2 class="display">Sharpening My Senses:<br><em style="color:var(--accent);">Professional Experience</em></h2>
+</div>
+
+<section class="section-wrapper" style="padding-top:0; padding-bottom:5rem;">
+  <div class="accordion-container">
+
+    <!-- QEELIN — current, most recent first -->
+    <div class="accordion-item reveal">
+      <div class="accordion-header">
+        <img src="assets/logos/qeelin.webp" alt="Qeelin" class="acc-logo">
+        <div class="acc-meta">
+          <div class="acc-period">Paris, France · Jul 2026 – Present</div>
+          <div class="acc-company heading">Qeelin — Kering Group</div>
+          <div class="acc-focus">Marketing &amp; Operations Assistant, EMEA</div>
+        </div>
+        <span class="acc-hint">Click to expand ▾</span>
+        <div class="acc-chevron"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <ul class="acc-bullets">
+            <li><strong>Coordinating</strong> daily operations across 30+ boutiques, distributors and EMEA export markets, relaying guidelines from Hong Kong HQ and adapting them to local needs.</li>
+            <li><strong>Standardising</strong> quarterly and annual sell-in / sell-out reporting, transforming raw data into product and point-of-sale performance dashboards for the regional team.</li>
+            <li><strong>Reduced</strong> order processing time by <strong>83%</strong> (from 30 to 5 min) by designing a Python copilot that normalises multi-format files and auto-generates inter-department emails.</li>
+            <li><strong>Digitising</strong> hundreds of handwritten client records into the CRM, identifying high-potential clients to invite to brand events.</li>
+          </ul>
+          <div class="acc-gallery">
+            <figure><img src="assets/work/qeelin-1.webp"><figcaption>EMEA Operations</figcaption></figure>
+            <figure><img src="assets/work/qeelin-2.webp"><figcaption>Trade Marketing</figcaption></figure>
+            <figure><img src="assets/work/qeelin-3.webp"><figcaption>Brand Events</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item reveal delay-1">
+      <div class="accordion-header">
+        <img src="assets/logos/wl.webp" alt="WL" class="acc-logo">
+        <div class="acc-meta">
+          <div class="acc-period">Canton, China · Mar 2025 – Jun 2025</div>
+          <div class="acc-company heading">Wealthfields Lohmann (FMCG)</div>
+          <div class="acc-focus">360° Brand Partnerships &amp; Go-to-Market</div>
+        </div>
+        <span class="acc-hint">Click to expand ▾</span>
+        <div class="acc-chevron"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <ul class="acc-bullets">
+            <li><strong>Orchestrated</strong> 360° offline marathon activations (Qingdao Marathon, HHI), generating <strong>4.19M impressions</strong> and €41k in direct sales.</li>
+            <li><strong>Coordinated</strong> influencer campaigns managing 20+ MCN agencies and 100+ KOLs, synchronising events with live-streaming for <strong>50k+ concurrent viewers</strong>.</li>
+            <li><strong>Increased</strong> Marketing ROI from 0.2 to 1.0+ via rigorous audience-content matching on Douyin (TikTok).</li>
+          </ul>
+          <div class="acc-gallery">
+            <figure><img src="assets/work/wl-1.webp"><figcaption>Marathon Live</figcaption></figure>
+            <figure><img src="assets/work/wl-2.webp"><figcaption>50k+ Stream</figcaption></figure>
+            <figure><img src="assets/work/wl-3.webp"><figcaption>Event Setup</figcaption></figure>
+            <figure><img src="assets/work/wl-4.webp"><figcaption>Offline Sales</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item reveal">
+      <div class="accordion-header">
+        <img src="assets/logos/mma.webp" alt="MMA" class="acc-logo">
+        <div class="acc-meta">
+          <div class="acc-period">Canton, China · Jan 2023 – Aug 2023</div>
+          <div class="acc-company heading">MMA Brand Services Pte. Ltd.</div>
+          <div class="acc-focus">Product Lifecycle Management &amp; E-Commerce Strategy</div>
+        </div>
+        <span class="acc-hint">Click to expand ▾</span>
+        <div class="acc-chevron"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <ul class="acc-bullets">
+            <li><strong>Accelerated</strong> market entry of 10+ new SKUs on Amazon using data methodologies equivalent to FMCG Panel Analysis (Nielsen/IRI).</li>
+            <li><strong>Optimized</strong> supply chain by negotiating with 15+ vendors, reducing logistics costs by <strong>20–40%</strong>.</li>
+          </ul>
+          <div class="acc-gallery">
+            <figure><img src="assets/work/mma-1.webp"><figcaption>Supply Chain Team</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item reveal delay-1">
+      <div class="accordion-header">
+        <img src="assets/logos/tal.webp" alt="TAL" class="acc-logo">
+        <div class="acc-meta">
+          <div class="acc-period">Guangzhou, China · Nov 2023 – Jun 2024</div>
+          <div class="acc-company heading">TAL Education Group</div>
+          <div class="acc-focus">EdTech &amp; Audience Engagement</div>
+        </div>
+        <span class="acc-hint">Click to expand ▾</span>
+        <div class="acc-chevron"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <ul class="acc-bullets">
+            <li><strong>Delivered</strong> high-stakes live presentations, achieving the <strong>#1 performance ranking</strong> among new instructors.</li>
+            <li><strong>Maintained</strong> a <strong>100% client renewal rate</strong> via proactive CRM strategies.</li>
+          </ul>
+          <div class="acc-gallery">
+            <figure><img src="assets/work/tal-1.webp"><figcaption>Top Performance</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item reveal">
+      <div class="accordion-header">
+        <img src="assets/logos/ace.webp" alt="ACE" class="acc-logo">
+        <div class="acc-meta">
+          <div class="acc-period">Nantes, France · Ongoing</div>
+          <div class="acc-company heading">Audencia Entrepreneur Club (ACE)</div>
+          <div class="acc-focus">PR, External Communication &amp; Event</div>
+        </div>
+        <span class="acc-hint">Click to expand ▾</span>
+        <div class="acc-chevron"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <ul class="acc-bullets">
+            <li><strong>Conceptualized</strong> and pitched the "DARE+" initiative, introducing a <strong>gamified competition</strong> for exclusive "booster packs."</li>
+            <li><strong>Secured</strong> institutional sponsorships (CVEC, GFA) and invited industry experts as guest speakers.</li>
+            <li><strong>Managed</strong> on-site execution and cross-departmental coordination from teaser campaign to closing remarks.</li>
+          </ul>
+          <div class="acc-gallery">
+            <figure><img src="assets/work/ace-1.webp"><figcaption>DARE Execution</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="demo" class="section-wrapper reveal">
+  <!-- Qeelin Copilot -->
+  <div class="ai-card">
+    <div>
+      <p class="label">Qeelin · Kering Group · Workflow Automation</p>
+      <h3 class="display">Order Processing<br>Copilot</h3>
+      <p>At Qeelin, order files arrived from 30+ boutiques in inconsistent formats — a manual bottleneck that consumed time better spent on brand strategy.</p>
+      <p>I built a <strong>Python copilot</strong> that normalises multi-format files, validates data integrity, and auto-generates inter-department emails — reducing processing time by <strong>83%</strong> (from 30 min to 5 min per batch).</p>
+      <a href="https://vermillion-empanada-3ae209.netlify.app/" target="_blank" class="btn btn-accent btn-pulse" style="margin-top:2rem;">
+        View Live Demo ↗
+      </a>
+    </div>
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div>
+      </div>
+      <img src="assets/copilot/copilot.webp" alt="Order Copilot" style="width:100%; display:block; object-fit:cover;">
+    </div>
+  </div>
+
+  <!-- Skincare Copilot -->
+  <div class="ai-card" style="margin-top:4rem;">
+    <div>
+      <p class="label">Current Exploration · Agile Prototyping</p>
+      <h3 class="display">Building the<br>Skincare Copilot</h3>
+      <p>By translating <strong>consumer intuition</strong> into structured logic, I <strong>rapidly coded and deployed</strong> this functional web application.</p>
+      <p>Designed to solve the real pain point of <strong>overwhelming skincare choices</strong> — providing personalised routine analysis and <strong>reducing cognitive load</strong> for beauty consumers.</p>
+      <a href="https://lygao-ducky.github.io/skincare_assistant/index.html" target="_blank" class="btn btn-accent btn-pulse" style="margin-top:2rem;">
+        Experience the Live Prototype ↗
+      </a>
+    </div>
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div>
+      </div>
+      <iframe src="https://lygao-ducky.github.io/skincare_assistant/index.html" title="Skincare Copilot"></iframe>
+    </div>
+  </div>
+
+  <!-- AI Knowledge Engine -->
+  <div class="ai-card" style="margin-top:4rem;">
+    <div>
+      <p class="label">Workflow Automation · AI Pipeline</p>
+      <h3 class="display">AI Knowledge<br>Extraction Engine</h3>
+      <p>Standard LLMs can't read links from Chinese social platforms due to anti-scraping barriers — making manual industry curation endless copy-paste work.</p>
+      <p>I engineered a fully automated pipeline using <strong>Coze</strong> to bypass extraction barriers, translate, and sync structured assets to a <strong>Notion Database</strong>.</p>
+      <div class="pipeline-diagram">
+        <div class="pl-node">
+          <div class="pl-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          </div>
+          <div class="pl-text"><div class="pl-title">Source Input</div><div class="pl-desc">Complex Social &amp; Video URLs</div></div>
+        </div>
+        <div class="pl-connector"></div>
+        <div class="pl-node" style="border-color:var(--accent);">
+          <div class="pl-icon" style="background:var(--accent);color:#fff;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+          </div>
+          <div class="pl-text"><div class="pl-title">AI Processing</div><div class="pl-desc">Bypass Barriers + LLM Synthesis</div></div>
+        </div>
+        <div class="pl-connector"></div>
+        <div class="pl-node">
+          <div class="pl-icon" style="background:var(--text);color:var(--bg);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </div>
+          <div class="pl-text"><div class="pl-title">Notion Output</div><div class="pl-desc">Auto-sync to structured Database</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="browser" style="box-shadow:0 20px 50px rgba(0,0,0,0.12);">
+      <div class="browser-bar">
+        <div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div>
+      </div>
+      <img src="assets/notion/notion.webp" alt="Notion Database" style="width:100%; display:block; object-fit:cover;">
+    </div>
+  </div>
+</section>
+
+<section id="manifesto" class="section-wrapper reveal" style="padding-top:1rem; padding-bottom:3rem;">
+  <div class="manifesto-container">
+    <div class="manifesto-glass">
+      <div class="manifesto-quote-mark">"</div>
+      <p class="manifesto-label">A Note on the AI Era</p>
+      <p class="manifesto-text">
+        From vibe coding to vibe marketing — AI optimizes my execution every day. But the more I use it, the clearer it becomes: <strong>human judgment is what truly defines a brand.</strong> My drive right now is to get my hands dirty in the real world, and relentlessly sharpen that edge.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="hobbies" class="section-wrapper reveal">
+  <div style="text-align:center; padding-top:0; margin-bottom:2rem;">
+    <h2 class="heading" style="font-size:clamp(1.8rem,3vw,2.5rem);">When I'm not in front of my laptop...</h2>
+    <p>Maintaining the "hardware" and optimizing the "flow state".</p>
+  </div>
+  <div class="hobby-stack">
+    <div class="hobby-card">
+      <img src="assets/hobbies/rowing.webp" alt="Rowing" class="hobby-img">
+      <div class="hobby-gradient"></div>
+      <div class="hobby-body">
+        <h4 class="heading">🚣 Aviron</h4>
+        <p>Just me, a boat, chasing the wind.</p>
+      </div>
+    </div>
+    <div class="hobby-card">
+      <img src="assets/hobbies/hiking.webp" alt="Hiking" class="hobby-img" style="object-position:top;">
+      <div class="hobby-gradient"></div>
+      <div class="hobby-body">
+        <h4 class="heading">🥾 Randonnée</h4>
+        <p>Leg burn? Yes. Worth it? Always.</p>
+      </div>
+    </div>
+    <div class="hobby-card">
+      <img src="assets/hobbies/climbing.webp" alt="Climbing" class="hobby-img">
+      <div class="hobby-gradient"></div>
+      <div class="hobby-body">
+        <h4 class="heading">🧗 Escalade</h4>
+        <p>The wall doesn't lie — every move is a micro-decision.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cv-lightbox" id="cv-lightbox" onclick="closeCVLight()">
+  <img src="" alt="CV Preview" id="cv-lightbox-img">
+  <button class="cv-lightbox-close" onclick="closeCVLight()">✕</button>
+  <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.6);font-size:.8rem;">Click anywhere to close</div>
+</div>
+
+<footer>
+  <div class="footer-contact">
+    <a href="mailto:liyi.gao.dm@gmail.com" class="btn btn-accent btn-pulse">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+      liyi.gao.dm@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/in/liyi-gao" target="_blank" class="btn btn-solid">LinkedIn</a>
+  </div>
+  <p class="footer-copy" style="margin-top:1rem;">Crafted with AI assistance &amp; human intuition. © 2026 Liyi GAO.</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var intro = document.getElementById('page-intro');
+  var brand = document.getElementById('intro-brand');
+  if(!intro) return;
+  document.body.style.overflow = 'hidden';
+  function startIntro(){
+    setTimeout(function(){ if(brand) brand.classList.add('fade'); }, 800);
+    setTimeout(function(){ intro.classList.add('done'); }, 1000);
+    setTimeout(function(){
+      intro.classList.add('gone');
+      document.body.style.overflow = '';
+      document.querySelectorAll('.will-reveal').forEach(function(el){
+        if(el.getBoundingClientRect().top < window.innerHeight - 60) el.classList.add('active');
+      });
+    }, 2000);
+  }
+  if(document.readyState === 'complete'){ startIntro(); }
+  else { window.addEventListener('load', startIntro); setTimeout(startIntro, 2000); }
+})();
+
+(function(){
+  function init(){
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('will-reveal'); });
+    function check(){
+      document.querySelectorAll('.will-reveal').forEach(function(el){
+        if(el.getBoundingClientRect().top < window.innerHeight - 60) el.classList.add('active');
+      });
+    }
+    window.addEventListener('scroll', check, {passive:true});
+    check();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+  else init();
+})();
+
+(function(){
+  var diaryCont = document.getElementById('diary-container');
+  var diaryTxt  = document.getElementById('diary-text');
+  var locked = false;
+  function update(){
+    if(!diaryCont||!diaryTxt||locked) return;
+    var rect = diaryCont.getBoundingClientRect();
+    var wh = window.innerHeight;
+    var total = rect.height - wh;
+    var p = Math.max(0, Math.min(1, -rect.top / total));
+    var translateY = Math.max(0, 50 * (1 - p*2));
+    var scale = 0.9 + Math.pow(p, 0.6) * 0.15;
+    var opacity = p < 0.25 ? p * 4 : 1;
+    diaryTxt.style.opacity   = opacity;
+    diaryTxt.style.transform = 'translateY('+translateY+'px) scale('+scale+')';
+    if(p >= 0.25){ locked = true; }
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+  setTimeout(function(){
+    if(!locked && diaryTxt){ diaryTxt.style.opacity='1'; diaryTxt.style.transform='translateY(0px) scale(1)'; locked=true; }
+  }, 3000);
+})();
+
+function toggleSnode(id) {
+  var node = document.getElementById(id);
+  if(!node) return;
+  var wasOpen = node.classList.contains('open');
+  document.querySelectorAll('.snode').forEach(function(n){ n.classList.remove('open'); });
+  if(!wasOpen) node.classList.add('open');
+}
+
+document.querySelectorAll('.accordion-header').forEach(function(header){
+  header.addEventListener('click', function(){
+    header.closest('.accordion-item').classList.toggle('open');
+  });
+});
+
+(function(){
+  var overlay = document.getElementById('drawer-overlay');
+  var drawer  = document.getElementById('o2o-drawer');
+  var close   = document.getElementById('drawer-close');
+  var trigger = document.getElementById('o2o-trigger');
+  function open(){ if(!drawer||!overlay) return; drawer.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+  function shut(){ if(!drawer||!overlay) return; drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow=''; }
+  if(trigger) trigger.addEventListener('click', open);
+  if(close)   close.addEventListener('click', shut);
+  if(overlay) overlay.addEventListener('click', shut);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') shut(); });
+})();
+
+(function(){
+  var sections = ['hero','story','arsenal','demo','hobbies'];
+  var fnavItems = document.querySelectorAll('.fnav-item');
+  window.addEventListener('scroll', function(){
+    var scrollY = window.scrollY + window.innerHeight/2;
+    var current = 'hero';
+    sections.forEach(function(id){
+      var el = document.getElementById(id);
+      if(el && el.offsetTop <= scrollY) current = id;
+    });
+    fnavItems.forEach(function(item){
+      item.classList.toggle('active', item.getAttribute('href')==='#'+current);
+    });
+  }, {passive:true});
+})();
+
+(function(){
+  document.querySelectorAll('.cv-dropdown button').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var dd = btn.closest('.cv-dropdown');
+      dd.classList.toggle('open');
+    });
+  });
+  document.querySelectorAll('.cv-menu a').forEach(function(a){
+    a.addEventListener('click', function(e){ e.stopPropagation(); });
+  });
+  document.addEventListener('click', function(){
+    document.querySelectorAll('.cv-dropdown.open').forEach(function(d){ d.classList.remove('open'); });
+  });
+})();
+
+document.querySelectorAll('.hobby-card').forEach(function(card){
+  card.addEventListener('click', function(){
+    var was = card.classList.contains('active');
+    document.querySelectorAll('.hobby-card.active').forEach(function(c){ c.classList.remove('active'); });
+    if(!was) card.classList.add('active');
+  });
+});
+
+function switchCV(lang) {
+  var enPage = document.getElementById('cv-page-en');
+  var frPage = document.getElementById('cv-page-fr');
+  var tabs = document.querySelectorAll('.cv-tab');
+  tabs.forEach(function(t){ t.classList.toggle('active', t.getAttribute('data-cv') === lang); });
+  if(lang === 'en'){ if(enPage) enPage.style.display=''; if(frPage) frPage.style.display='none'; }
+  else { if(enPage) enPage.style.display='none'; if(frPage) frPage.style.display=''; }
+}
+
+var _cvCurrentLang = 'en';
+function openCVLight(lang) {
+  _cvCurrentLang = lang || 'en';
+  var imgs = {
+    en: 'assets/cv/Liyi GAO_CV ENG_MARKETING 2026.webp',
+    fr: 'assets/cv/Liyi GAO_CV FR_MARKETING 2026.webp'
+  };
+  var lb  = document.getElementById('cv-lightbox');
+  var lbi = document.getElementById('cv-lightbox-img');
+  if(!lb || !lbi) return;
+  lbi.src = imgs[_cvCurrentLang] || imgs.en;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCVLight() {
+  var lb = document.getElementById('cv-lightbox');
+  if(lb) lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+(function(){
+  var lbi = document.getElementById('cv-lightbox-img');
+  if(lbi) lbi.addEventListener('click', function(e){ e.stopPropagation(); });
+})();
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeCVLight(); });
+</script>
+</body>
+</html>
