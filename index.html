@@ -102,16 +102,50 @@ p, h1, h2, h3, h4, li, figcaption { position: relative; z-index: 2; }
 .avail-dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation:blink 1.8s ease-in-out infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
 
-/* --- 更新的 Hero 文本样式 --- */
-.hero-h1 { font-size:clamp(3rem,5.5vw,5.2rem); margin-bottom:1rem; }
-.hero-h1 em { color:var(--accent); font-style:italic; }
+/* --- 更新的 Hero 文本样式 (高端社论风) --- */
+.hero-h1 { 
+  font-size: clamp(3rem, 5.5vw, 5.2rem); 
+  margin-bottom: 0.5rem; /* 稍微收紧标题自身的底部间距 */
+}
+.hero-h1 em { 
+  color: var(--accent); 
+  font-style: italic; 
+}
 
-.hero-pillars { display:flex; flex-wrap:wrap; align-items:center; gap:0.6rem; margin-bottom:1.5rem; font-family:'Jost',sans-serif; font-size:0.85rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--accent); }
-.hero-pillars .dot { color:var(--muted); font-weight:300; }
-.hero-pillars .highlight { background:var(--accent-lt); padding:0.2rem 0.6rem; border:1px solid rgba(0,47,167,0.15); border-radius:2px; }
+.hero-pillars { 
+  display: flex; 
+  flex-wrap: wrap; 
+  align-items: center; 
+  gap: 1rem; 
+  margin-top: 1.5rem;    /* 增加与上方标题的距离，打破紧凑感 */
+  margin-bottom: 2.5rem; /* 增加与下方段落的距离，留出呼吸感 */
+  font-family: 'Jost', sans-serif; 
+  font-size: 0.72rem;    /* 字号调小，凸显精致感 */
+  font-weight: 500;      /* 降低字重，去掉厚重感 */
+  letter-spacing: 2.5px; /* 拉大字间距，这是奢侈品排版的灵魂 */
+  text-transform: uppercase; 
+  color: var(--text);    /* 改为深灰/黑色，避免与标题的蓝色撞色 */
+  opacity: 0.8;          /* 微微半透明，让它在视觉上退后一步 */
+}
+.hero-pillars .dot { 
+  color: var(--accent);  /* 仅保留分隔符是一点点蓝色 */
+  opacity: 0.4; 
+  font-weight: 300;
+  font-size: 0.85rem;
+}
 
-.hero-desc { font-size:1.05rem; color:var(--text); max-width:540px; margin-bottom:2.2rem; line-height:1.75; opacity:0.9; }
-.hero-desc strong { color:var(--text); font-weight:600; }
+.hero-desc { 
+  font-size: 1.05rem; 
+  color: var(--text); 
+  max-width: 540px; 
+  margin-bottom: 2.2rem; 
+  line-height: 1.75; 
+  opacity: 0.9; 
+}
+.hero-desc strong { 
+  color: var(--text); 
+  font-weight: 600; 
+}
 /* ---------------------------------- */
 
 .hero-ctas { display:flex; flex-wrap:wrap; align-items:center; gap:.9rem; margin-bottom:2.4rem; }
@@ -436,19 +470,17 @@ footer { border-top:1px solid var(--border); padding:3rem 5% 5rem; max-width:128
     <div class="hero-left reveal">
       <div class="avail-badge"><span class="avail-dot"></span>Audencia PGE &nbsp;·&nbsp; Internship from January 2027</div>
       
-<!-- --- 以 Brand Strategy 为绝对核心的最终排版 --- -->
+<!-- --- 以 Brand Strategy 为绝对核心的排版 --- -->
       <h1 class="display hero-h1">The Evolution<br>of a <em>Brand Strategist.</em></h1>
       
-      <!-- 去掉了 highlight 框，让三个词视觉权重完全一致 -->
       <div class="hero-pillars reveal delay-1">
         <span>Brand Strategy</span>
-        <span class="dot">·</span>
+        <span class="dot">/</span>
         <span>Consumer Insights</span>
-        <span class="dot">·</span>
+        <span class="dot">/</span>
         <span>AI-Empowered Execution</span>
       </div>
 
-      <!-- 这里就是更新后的纯正 Strategy 黑话段落 -->
       <p class="hero-desc reveal delay-1">
         Dedicated to shaping the strategic vision of luxury and beauty brands with depth and cultural resonance. I bridge the gap between product innovation and market reality by <strong>translating data into compelling brand narratives</strong>, and leveraging AI to ensure flawless omnichannel execution.
       </p>
