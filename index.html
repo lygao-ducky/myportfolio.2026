@@ -155,7 +155,7 @@ p, h1, h2, h3, h4, li, figcaption { position: relative; z-index: 2; }
 .hero-right { position:relative; }
 .hero-img-wrap { width:100%; height:65vh; border-radius:0; overflow:hidden; clip-path:inset(30% 30% 30% 30% round 0px); animation:expandImg 1.6s cubic-bezier(.16,1,.3,1) .3s both; box-shadow:0 20px 60px rgba(0,0,0,.12); border:none; }
 .hero-img-wrap img { width:100%; height:100%; object-fit:cover; object-position:center 15%; transform:scale(1.18); animation:scaleImg 1.6s cubic-bezier(.16,1,.3,1) .3s both; }
-.hero-name-overlay { position:absolute; bottom:-5%; left:-20%; font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(3.5rem,7vw,6rem); font-weight:800; color:#fff; mix-blend-mode:exclusion; filter:drop-shadow(0px 10px 15px rgba(0,0,0,0.5)) drop-shadow(0px 4px 6px rgba(0,0,0,0.3)); z-index:10; opacity:0; animation:fadeUp .9s ease 1.2s forwards; pointer-events:none; white-space:nowrap; }
+.hero-name-overlay { position:absolute; bottom:-5%; left:-20%; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(3.5rem,7vw,6rem); font-weight:800; color:#fff; mix-blend-mode:exclusion; filter:drop-shadow(0px 10px 15px rgba(0,0,0,0.5)) drop-shadow(0px 4px 6px rgba(0,0,0,0.3)); z-index:10; opacity:0; animation:fadeUp .9s ease 1.2s forwards; pointer-events:none; white-space:nowrap; }
 @keyframes expandImg { to { clip-path:inset(0 0 0 0 round 0px); } }
 @keyframes scaleImg  { to { transform:scale(1); } }
 @keyframes fadeUp    { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
@@ -163,7 +163,7 @@ p, h1, h2, h3, h4, li, figcaption { position: relative; z-index: 2; }
 /* CV FLIP SECTION */
 .cv-flip-section { padding:5rem 5%; max-width:1040px; margin:0 auto; position:relative; }
 .cv-flip-header { text-align:center; margin-bottom:3rem; }
-.cv-flip-header h2 { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(2rem,4vw,3.2rem); font-weight:800; letter-spacing:-1px; line-height:1.1; color:var(--text); }
+.cv-flip-header h2 { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(2rem,4vw,3.2rem); font-weight:800; letter-spacing:-1px; line-height:1.1; color:var(--text); }
 .cv-switcher { display:flex; justify-content:center; gap:.5rem; margin-bottom:3rem; }
 .cv-tab { padding:.55rem 1.4rem; border-radius:0; font-size:.75rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; border:1.5px solid var(--border); background:var(--card-bg); color:var(--muted); transition:all .22s; }
 .cv-tab.active { background:var(--accent); color:#fff; border-color:var(--accent); box-shadow:none; }
@@ -184,13 +184,13 @@ p, h1, h2, h3, h4, li, figcaption { position: relative; z-index: 2; }
 /* DIARY PARALLAX */
 .diary-container { height:150vh; position:relative; z-index:15; margin-bottom:-5vh; }
 .diary-sticky { position:sticky; top:0; height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-.diary-text { font-size:clamp(2rem,4.5vw,4rem); font-family:'Playfair Display',serif; font-style:italic; font-weight:800; color:var(--text); text-align:center; opacity:0; transform:scale(0.9) translateY(20px); letter-spacing:-1px; line-height:1.2; will-change:transform, opacity; }
+.diary-text { font-size:clamp(2rem,4.5vw,4rem); font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:800; color:var(--text); text-align:center; opacity:0; transform:scale(0.9) translateY(20px); letter-spacing:-1px; line-height:1.2; will-change:transform, opacity; }
 
 /* STORY */
 #story { background:var(--bg); padding-bottom:4rem; position:relative; }
 .story-header { text-align:center; margin-bottom:3rem; }
 .story-header .st-eyebrow { font-size:.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:.6rem; }
-.story-header h2 { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:800; letter-spacing:-1px; line-height:1.1; color:var(--text); }
+.story-header h2 { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:800; letter-spacing:-1px; line-height:1.1; color:var(--text); }
 .story-header .st-sub { font-size:.9rem; color:var(--muted); margin-top:.5rem; }
 .timeline-wrapper { position:relative; max-width:800px; margin:0 auto; padding:0 5%; }
 .timeline-spine { position:absolute; left:calc(5% + 38px); top:0; bottom:0; width:0; border-left:2px dashed var(--accent); opacity:0.25; z-index:1; }
@@ -261,7 +261,7 @@ p, h1, h2, h3, h4, li, figcaption { position: relative; z-index: 2; }
 /* ARSENAL */
 .arsenal-header { text-align:center; margin-bottom:2.5rem; padding-top:3rem; }
 .arsenal-header p.label { margin-bottom:.4rem; }
-.arsenal-header h2 { font-size:clamp(2rem,3.5vw,3rem); font-style:italic; line-height:1.1; font-family:'Playfair Display',serif; font-weight:800; color:var(--text); }
+.arsenal-header h2 { font-size:clamp(2rem,3.5vw,3rem); font-style:italic; line-height:1.1; font-family:'Cormorant Garamond',serif; font-weight:800; color:var(--text); }
 #arsenal { background:var(--bg); padding-bottom:4rem; }
 .accordion-container { display:flex; flex-direction:column; gap:.8rem; max-width:900px; margin:0 auto; position:relative; }
 .accordion-item { background:var(--card-bg); border:1px solid var(--border); border-radius:0; overflow:hidden; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s, box-shadow 0.3s; position:relative; }
@@ -302,7 +302,7 @@ p, h1, h2, h3, h4, li, figcaption { position: relative; z-index: 2; }
 .ai-card { display:grid; grid-template-columns:1fr 1.2fr; gap:3rem; align-items:center; background:var(--card-bg); border:1px solid var(--border); border-radius:0; padding:3.5rem; position:relative; overflow:hidden; isolation:isolate; max-width:1100px; margin:0 auto; box-shadow:0 15px 40px rgba(0,0,0,0.04); }
 .ai-card::before { content:''; position:absolute; top:-30%; right:-5%; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%); pointer-events:none; }
 .ai-card > div { position:relative; z-index:1; }
-.ai-card h3 { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3vw,2.2rem); font-weight:800; margin:.4rem 0 .8rem; line-height:1.2; }
+.ai-card h3 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,3vw,2.2rem); font-weight:800; margin:.4rem 0 .8rem; line-height:1.2; }
 .ai-card p { color:var(--text); font-size:.95rem; line-height:1.7; }
 .ai-card p+p { margin-top:.6rem; }
 .browser { border:1px solid var(--border); border-radius:0; overflow:hidden; box-shadow:0 12px 36px rgba(0,0,0,.06); background:#fff; min-width:0; }
@@ -343,7 +343,7 @@ p, h1, h2, h3, h4, li, figcaption { position: relative; z-index: 2; }
   border-radius:20px 0 0 20px;
   background:linear-gradient(to bottom,var(--accent),var(--accent-dk));
 }
-.manifesto-quote-mark { font-family:'Playfair Display',serif; font-size:3.5rem; line-height:.8; color:#fff; opacity:.35; margin-bottom:.4rem; }
+.manifesto-quote-mark { font-family:'Cormorant Garamond',serif; font-size:3.5rem; line-height:.8; color:#fff; opacity:.35; margin-bottom:.4rem; }
 .manifesto-label { font-size:.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:.7rem; }
 .manifesto-text { font-size:1rem; color:rgba(255,255,255,0.9); line-height:1.8; max-width:580px; }
 .manifesto-text strong { color:#fff; font-weight:700; }
@@ -468,7 +468,7 @@ footer { border-top:1px solid var(--border); padding:3rem 5% 5rem; max-width:128
 <section id="hero" class="section-wrapper">
   <div class="hero">
     <div class="hero-left reveal">
-      <div class="avail-badge"><span class="avail-dot"></span>Audencia PGE &nbsp;·&nbsp; Internship from January 2027</div>
+      <div class="avail-badge"><span class="avail-dot"></span>Open to Sept 2027 alternance · Retail strategy &amp; data</div>
       
 <!-- --- 以 Brand Strategy 为绝对核心的排版 --- -->
       <h1 class="display hero-h1">The Evolution<br>of a <em>Brand Strategist.</em></h1>
@@ -519,9 +519,9 @@ footer { border-top:1px solid var(--border); padding:3rem 5% 5rem; max-width:128
   <div class="cv-flip-header">
     <p class="label" style="margin-bottom:.6rem;">Download &amp; Preview</p>
     <h2 class="display">My CV,<br><em style="color:var(--accent);">at a glance</em></h2>
-    <div style="display:inline-flex;align-items:center;gap:.6rem;margin:1.2rem 0 .4rem;padding:.6rem 1.4rem;background:var(--accent-lt);border:1.5px solid rgba(41,151,255,.25);border-radius:40px;">
+    <div style="display:inline-flex;align-items:center;gap:.6rem;margin:1.2rem 0 .4rem;padding:.6rem 1.4rem;background:var(--accent-lt);border:1.5px solid rgba(41,151,255,.25);border-radius:0;">
       <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);animation:blink 1.8s ease-in-out infinite;display:inline-block;"></span>
-      <span style="font-size:.85rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;">Actively seeking internship · Available from January 2027</span>
+      <span style="font-size:.85rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;">Open to Sept 2027 alternance · Retail strategy &amp; data</span>
     </div>
     <p style="margin-top:.6rem;">Click to preview full CV · Download below</p>
   </div>
@@ -678,12 +678,39 @@ footer { border-top:1px solid var(--border); padding:3rem 5% 5rem; max-width:128
 <section class="section-wrapper" style="padding-top:0; padding-bottom:5rem;">
   <div class="accordion-container">
 
-    <!-- QEELIN — current, most recent first -->
+    <!-- DIOR — upcoming, listed first -->
     <div class="accordion-item reveal">
+      <div class="accordion-header">
+        <div class="acc-logo" style="width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:var(--surface2);border:1px solid var(--border);flex-shrink:0;">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text);text-align:center;line-height:1.2;">CD<br>LVMH</span>
+        </div>
+        <div class="acc-meta">
+          <div class="acc-period">Paris, France · Jan 2027 – Present &nbsp;<span style="background:var(--accent);color:#fff;font-size:.6rem;padding:.15rem .5rem;letter-spacing:1px;text-transform:uppercase;vertical-align:middle;">Starting Jan 2027</span></div>
+          <div class="acc-company heading">Christian Dior Couture — LVMH</div>
+          <div class="acc-focus">Assistant Retail Merchandiser, Women's Accessories (Eyewear)</div>
+        </div>
+        <span class="acc-hint">Click to expand ▾</span>
+        <div class="acc-chevron"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <ul class="acc-bullets">
+            <li><strong>Weekly sales tracking</strong> across boutiques, consolidating data to identify performance trends in Women's Accessories and Eyewear lines.</li>
+            <li><strong>Store selection &amp; inventory allocation</strong> — matching stock to boutique profiles and sales potential to optimise sell-through.</li>
+            <li><strong>Sales forecasting</strong> — building short- and mid-term projections to support buying and replenishment decisions.</li>
+            <li><strong>Price &amp; discount recommendations</strong> — analysing margin data and competitive positioning to advise on promotional strategy.</li>
+            <li><strong>Ad-hoc data analysis</strong> — responding to category and market questions from the merchandising team with structured quantitative insights.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- QEELIN -->
+    <div class="accordion-item reveal delay-1">
       <div class="accordion-header">
         <img src="assets/logos/qeelin.webp" alt="Qeelin" class="acc-logo">
         <div class="acc-meta">
-          <div class="acc-period">Paris, France · Jul 2026 – Present</div>
+          <div class="acc-period">Paris, France · Jul – Dec 2026</div>
           <div class="acc-company heading">Qeelin — Kering Group</div>
           <div class="acc-focus">Marketing &amp; Operations Assistant, EMEA</div>
         </div>
